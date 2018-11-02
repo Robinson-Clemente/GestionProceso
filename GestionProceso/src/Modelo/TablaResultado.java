@@ -35,11 +35,7 @@ public class TablaResultado {
             cola2 = this.sortLlegada(cola2);
 
             // y lo volvemos a pasar a la Cola ya organizados en el orden requerido
-            for(int i = 0; i < cola2.length; i++) {
-
-                cola.offer(cola2[i]);
-
-            }
+            cola = arrayToQueue(cola2);
 
             //Calculamos la sumatoria de tiempos
             int limite = this.calculateLimit(cola2);
@@ -89,10 +85,7 @@ public class TablaResultado {
             cola2 = this.sortLlegada(cola2);
 
             // Llenamos la cola con los procesos ordenados
-            for (int i = 0; i < cola2.length; i++) {
-                cola.offer(cola2[i]);
-
-            }
+            cola = arrayToQueue(cola2);
 
             //Calculamos la sumatoria de tiempos
             int limite = this.calculateLimit(cola2);
@@ -113,221 +106,134 @@ public class TablaResultado {
 
             while (n < limite) {
 
-  if (cola.isEmpty() & element.getProceso() <= 0) {
+                if (cola.isEmpty() & element.getProceso() <= 0) {
 
-                break;
-
-            } else {
-
-                element.setProceso(element.getProceso() - 1);
-                fila2[n] = "       " + element.getNombre();
-                n++;
-
-                //Rotamos buscando un proceso igual a n
-                if (element.getProceso() != 0) {
-                    int y = 0;
-                    while (y < cola.size()) {
-                        temp = cola.poll();
-                        if (temp.getLlegada() == n) {
-                            if (temp.getProceso() < element.getProceso()) {
-
-                                cola.offer(element);
-                                element = temp;
-                                estado = true;
-
-                            } else {
-
-                                cola.offer(temp);
-
-                            }
-
-                        } else {
-                            cola.offer(temp);
-                        }
-                        y++;
-                    }
-
-                    // Si no consigue llegadas y el proceso de element ==0 entonces Buscamos el mas rapido
-                    if (estado == false & element.getProceso() == 0) {
-                        cola = deleteZeros(cola);
-                        int k = 0;
-                        element = cola.poll();
-                        if (!cola.isEmpty()) {
-                            while (k < cola.size()) {
-                                temp = cola.poll();
-                                if (!(element.getProceso() == temp.getProceso())) {
-                                    if (element.getProceso() > temp.getProceso()) {
-                                        cola.offer(element);
-                                        element = temp;
-                                    } else {
-
-                                        cola.offer(temp);
-                                    }
-
-                                } else {
-
-                                    if (element.getLlegada() < temp.getLlegada()) {
-
-                                        cola.offer(temp);
-                                    } else {
-
-                                        cola.offer(element);
-                                        element = temp;
-
-                                    }
-
-                                }
-                                k++;
-                            }
-                        }
-                    } // SINO BUSCAMOS EL MAS RAPIDO Y SI NO SE CONSIGUE QUE CONTINUE CON EL PROCESO
+                    break;
 
                 } else {
 
-                    cola = deleteZeros(cola);
-                    // si un elemento llego a 0 buscamos el mas rapido   
-                    // EL BUG ESTÁ AQUIIII!
-                    int k = 0;
-                    element = cola.poll(); // OJO QUE ESTE ES EL PRINCIPAL!!
-                    if (!(cola.isEmpty())) {
+                    element.setProceso(element.getProceso() - 1);
+                    fila2[n] = "       " + element.getNombre();
+                    n++;
 
-                        while (k < cola.size()) {
+                    //Rotamos buscando un proceso igual a n
+                    if (element.getProceso() != 0) {
+                        int y = 0;
+                        while (y < cola.size()) {
                             temp = cola.poll();
-
-                            if (!(element.getProceso() == temp.getProceso())) {
-                                if (element.getProceso() > temp.getProceso()) {
+                            if (temp.getLlegada() == n) {
+                                if (temp.getProceso() < element.getProceso()) {
                                     cola.offer(element);
                                     element = temp;
+                                    estado = true;
                                 } else {
-                                    cola.offer(temp);
-                                }
-
-                            } else {
-                                if (element.getLlegada() < temp.getLlegada()) {
-
-                                    cola.offer(temp);
-
-                                } else {
-
-                                    cola.offer(element);
-                                    element = temp;
-
-                                }
+                                  cola.offer(temp);
+                                }                                
+                            } 
+                                else {
+                              cola.offer(temp);
                             }
-                            k++;
+                            y++;
+                            }
+
+                        // Si no consigue llegadas y el proceso de element ==0 entonces Buscamos el mas rapido
+                        if (estado == false & element.getProceso() == 0) {
+
+                            element = getElMasRapido(cola);
+
+                        } // SINO BUSCAMOS EL MAS RAPIDO Y SI NO SE CONSIGUE QUE CONTINUE CON EL PROCESO
+
+                                    } else {
+                               element = getElMasRapido(cola);
+                            }
+
                         }
+                       cola = deleteZeros(cola);
+                       estado = false;
                     }
+
+                        modelo2.addRow(fila2);
+
                 }
 
-            }
-            cola = deleteZeros(cola);
-            estado = false;
-        }
-
-        modelo2.addRow(fila2);
-        
-    }
-   
 }
 
     
     public void roundRobin() {
-    
-       int quantum=0;
-       boolean status = false;
 
-       if(d.getColaProceso().isEmpty()){
-       
-       
-      JOptionPane.showMessageDialog(null,"Registre procesos por favor",null,2);   
-       
-       }else{
+        int quantum = 0;
+        boolean status = false;
 
-        while(status == false) {
+        if (d.getColaProceso().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Registre procesos por favor", null, 2);
+        } else {
 
-            try {
-                String q = JOptionPane.showInputDialog(null, "Digite el Quantum");                                
-                quantum = Integer.parseInt(q);
-                status = true;
-               
-                if(quantum<=0){
-                
-                quantum = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite el Quantum"));
-                status=false;
-                break;
+            while (status == false) {
+                try {
+                    String q = JOptionPane.showInputDialog(null, "Digite el Quantum");
+                    quantum = Integer.parseInt(q);
+                    status = true;
+                    if (quantum <= 0) {
+                        quantum = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite el Quantum"));
+                        status = false;
+                        break;
+                    }
+
+                } catch (NumberFormatException e) {
+
+                    JOptionPane.showMessageDialog(null, "Digite Numero/Llene la casilla");
+                    status = false;
                 }
 
-            } catch (NumberFormatException e) {
-
-               JOptionPane.showMessageDialog(null,"Digite Numero/Llene la casilla");
-               status = false;
             }
-            
+            if (status == true) {
+
+                cola = d.getColaProceso();
+
+                //Al no haber un metodo get en Queue lo pasamos a un Arreglo[]
+                Proceso[] cola2 = this.queueToArray(cola);
+
+                // Organizamos en el orden de Proceso/Llegada usando el metodo burbuja           
+                cola2 = this.sortLlegada(cola2);
+
+                // Llenamos la cola con los procesos ordenados
+                cola = arrayToQueue(cola2);
+
+                //Calculamos la sumatoria de tiempos
+                int limite = this.calculateLimit(cola2);
+
+                VistaPrincipal.refreshTR();
+                String cabecera[] = new String[limite];
+
+                for (int i = 0; i < limite; i++) {
+                    cabecera[i] = String.valueOf("       " + i);
+                }
+
+                modelo2.setColumnIdentifiers(cabecera);
+                String fila2[] = new String[limite];
+                int time = 0;
+                Proceso element = cola.poll();
+
+                while (time < limite) {
+                    int u = 0;
+                    while (u < quantum) {
+                        deleteZeros(cola);
+                        element.setProceso(element.getProceso() - 1);
+                        fila2[time] = String.valueOf("       " + element.getNombre());
+                        time++;
+                        if (element.getProceso() <= 0) {
+                            deleteZeros(cola);
+                            break;
+                        }
+                        u++;
+                    }
+                    cola.offer(element);
+                    element = cola.poll();
+                }
+                modelo2.addRow(fila2);
+            }
 
         }
-     
-             if(status==true){
-               
-        cola = d.getColaProceso();
-        
-               
-            //Al no haber un metodo get en Queue lo pasamos a un Arreglo[]
-            Proceso[] cola2 = this.queueToArray(cola);
-
-            // Organizamos en el orden de Proceso/Llegada usando el metodo burbuja           
-            cola2 = this.sortLlegada(cola2);
-
-            // Llenamos la cola con los procesos ordenados
-            for (int i = 0; i < cola2.length; i++) {
-                cola.offer(cola2[i]);
-
-            }
-
-            //Calculamos la sumatoria de tiempos
-            int limite = this.calculateLimit(cola2);
-
-            VistaPrincipal.refreshTR();
-            String cabecera[] = new String[limite];
-
-            for (int i = 0; i < limite; i++) {
-                cabecera[i] = String.valueOf("       " + i);
-            }
-            modelo2.setColumnIdentifiers(cabecera);
-
-            String fila2[] = new String[limite];
-            int time = 0;
-            Proceso element = cola.poll();
-            Proceso temp = new Proceso();
-            boolean estado = false;
-
-            while(time < limite) {
-
-                int u = 0;
-                while (u < quantum) {
-                     deleteZeros(cola);
-                    element.setProceso(element.getProceso() - 1);
-                    fila2[time] = String.valueOf("       "+element.getNombre());
-                    time++;
-                    if (element.getProceso() <= 0) {
-                        deleteZeros(cola);
-                        break;
-
-                    }
-                    u++;
-                   
-                }
-                
-                cola.offer(element);
-                element = cola.poll();
-               
-            
-            }
-            
-            modelo2.addRow(fila2);
-       
-             }
-             
-       }
     }
     
       
@@ -348,11 +254,7 @@ public class TablaResultado {
             cola2 = this.sortProceso(cola2);
 
             // y lo volvemos a pasar a la Cola ya organizados en el orden requerido
-            for(int i = 0; i < cola2.length; i++) {
-
-                cola.offer(cola2[i]);
-
-            }
+            cola = arrayToQueue(cola2);
 
             //Calculamos la sumatoria de tiempos
             int limite = this.calculateLimit(cola2);
@@ -401,12 +303,7 @@ public class TablaResultado {
 
             cola2 = this.sortPrioridad(cola2);
 
-           
-            for(int i = 0; i < cola2.length; i++) {
-
-                cola.offer(cola2[i]);
-
-            }
+            cola = arrayToQueue(cola2);        
 
             //Calculamos la sumatoria de tiempos
             int limite = this.calculateLimit(cola2);
@@ -553,6 +450,67 @@ public class TablaResultado {
     }
 
 
+    
+    private Queue<Proceso> arrayToQueue(Proceso [] array){
+    
+        Queue<Proceso> cola = new LinkedList<>();
+        
+        for (Proceso proceso : array) {
+            
+            cola.offer(proceso);
+        }
+    
+    
+    return cola;
+    }
+    
+    
+    
+    
+    
+    public Proceso getElMasRapido(Queue<Proceso> cola) {
+
+        Proceso element = new Proceso();
+        Proceso temp = new Proceso();
+
+        cola = deleteZeros(cola);
+
+        int k = 0;
+        element = cola.poll();
+        if (!(cola.isEmpty())) {
+            while (k < cola.size()) {
+                temp = cola.poll();
+                if (!(element.getProceso() == temp.getProceso())) {
+                    if (element.getProceso() > temp.getProceso()) {
+                        cola.offer(element);
+                        element = temp;
+                    } else {
+                        cola.offer(temp);
+                    }
+
+                } else {
+                    if (element.getLlegada() < temp.getLlegada()) {
+
+                        cola.offer(temp);
+
+                    } else {
+
+                        cola.offer(element);
+                        element = temp;
+
+                    }
+                }
+                k++;
+            }
+        }
+
+        return element;
+    }
+    
+    
+    
+    
+    
     public DefaultTableModel getModel() {
         return modelo2;
     }
