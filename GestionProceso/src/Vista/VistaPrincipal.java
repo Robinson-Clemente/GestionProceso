@@ -33,7 +33,7 @@ public class VistaPrincipal extends  javax.swing.JFrame {
         
         this.setSize(1000, 795);
         this.setResizable(false);
-        this.setLocationRelativeTo(null);        
+        this.setLocationRelativeTo(null);    
         tableProceso.setModel(tableProc.getModel());    
         tableResultado.setModel(tableResult.getModel());   
         tableResultado.setAutoResizeMode(0);
@@ -42,8 +42,8 @@ public class VistaPrincipal extends  javax.swing.JFrame {
     }
 
    
-    public static void refreshTableProcess(){
-    
+    public static void refreshTableProcess(){    
+        
         tableProc.getModel().setNumRows(0);
         tableProc.setData();
         
@@ -66,7 +66,7 @@ public class VistaPrincipal extends  javax.swing.JFrame {
        b.getColaProceso().add(new Proceso("C",4,1,1));  
        b.getColaProceso().add(new Proceso("D",5,4,1));        
        
-           refreshTableProcess(); 
+       refreshTableProcess(); 
        
   
     }
@@ -131,7 +131,6 @@ public class VistaPrincipal extends  javax.swing.JFrame {
         tableProceso = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnSFJ = new javax.swing.JButton();
         btnPrio = new javax.swing.JButton();
@@ -181,11 +180,7 @@ public class VistaPrincipal extends  javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 113, -1, 32));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setText("<------ Si tiene Flojera!!");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 112, -1, 32));
+        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, 32));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 760, 260));
 
@@ -199,7 +194,7 @@ public class VistaPrincipal extends  javax.swing.JFrame {
                 btnSFJActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSFJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 21, 80, 39));
+        jPanel2.add(btnSFJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 80, 39));
 
         btnPrio.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnPrio.setText("Prioridad");
@@ -208,7 +203,7 @@ public class VistaPrincipal extends  javax.swing.JFrame {
                 btnPrioActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPrio, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 70, -1, 39));
+        jPanel2.add(btnPrio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, 39));
 
         btnFCFS.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnFCFS.setText("FCFS");
@@ -226,7 +221,7 @@ public class VistaPrincipal extends  javax.swing.JFrame {
                 btnSRJFActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSRJF, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 21, 80, 39));
+        jPanel2.add(btnSRJF, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 80, 39));
 
         btnRR.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnRR.setText("RoundRobin");
@@ -235,9 +230,9 @@ public class VistaPrincipal extends  javax.swing.JFrame {
                 btnRRActionPerformed(evt);
             }
         });
-        jPanel2.add(btnRR, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 70, -1, 39));
+        jPanel2.add(btnRR, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, 39));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 580, 120));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 580, 120));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("RESULTADOS");
@@ -263,7 +258,7 @@ public class VistaPrincipal extends  javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
        
-            VRegistrar va = new VRegistrar();
+            VRegistrar va = new VRegistrar();            
             va.setVisible(true);
         
         
@@ -348,7 +343,6 @@ public class VistaPrincipal extends  javax.swing.JFrame {
     private javax.swing.JButton btnSRJF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
