@@ -15,8 +15,11 @@ import java.util.Queue;
 
 
 
-public class VistaPrincipal extends javax.swing.JFrame {
+public class VistaPrincipal extends  javax.swing.JFrame {
 
+   private static final long serialVersionUID = 1L;
+    
+    
     ControlProceso a = new ControlProceso();
     private static TablaProceso tableProc = new TablaProceso();
     private static TablaResultado tableResult = new TablaResultado();

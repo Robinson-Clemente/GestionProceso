@@ -5,6 +5,8 @@ import Modelo.Proceso;
 import javax.swing.JOptionPane;
 
 public class VRegistrar extends javax.swing.JFrame {
+    
+    private static final long serialVersionUID = 1L;
 
     ControlProceso b = new ControlProceso();
 

@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 public class Proceso implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+    
     private String nombre;
     private int llegada;
     private int proceso;   

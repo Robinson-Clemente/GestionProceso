@@ -342,10 +342,10 @@ public class TablaResultado {
     
     private Proceso[] queueToArray(Queue<Proceso> Queue) {
         
-        int tamaño = Queue.size();
-        Proceso[] array = new Proceso[tamaño];
+        int tamano = Queue.size();
+        Proceso[] array = new Proceso[tamano];
         
-        for (int i = 0; i < tamaño; i++) {
+        for (int i = 0; i < tamano; i++) {
             
             array[i] = Queue.poll();
             

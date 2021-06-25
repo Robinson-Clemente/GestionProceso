@@ -14,8 +14,10 @@ import java.util.Queue;
 
 public class ControlProceso {    
     
-    private static Queue<Proceso> colaProceso = new LinkedList<Proceso>();    
-
+    @SuppressWarnings("unchecked")
+    private static Queue<Proceso> colaProceso = new LinkedList<>(); 
+    
+    
     public Queue<Proceso> getColaProceso() {
         return colaProceso;
     }
@@ -24,10 +26,12 @@ public class ControlProceso {
         ControlProceso.colaProceso = colaProceso;
     }
    
-    
+      @SuppressWarnings("unchecked")
       public void llenar(){
-
+      
         try{            
+            
+        
          FileInputStream filein = new FileInputStream("data1.txt"); 
    
          
@@ -35,7 +39,7 @@ public class ControlProceso {
                  ObjectInputStream objin = new ObjectInputStream(filein); 
                  
                 try{                    
-                  
+                        
                       colaProceso = (Queue<Proceso>) objin.readObject();
                 }catch(ClassNotFoundException e){}
             }catch(IOException e){}
