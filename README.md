@@ -8,7 +8,7 @@
 Estando en la carpeta del proyecto, para compilarlo se debe ejecutar en la carpeta src:/
 
 
-javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java") (buscar el equivalente $(find . -name "*.java") en sistemas no Unix)
+javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java") (aplica al menos para Ubuntu)
 
 
 y para ejecutarlo:/
