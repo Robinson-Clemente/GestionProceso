@@ -7,7 +7,7 @@
 <h3>Compilación y Ejecución</h3>
 
 
-Compilarl el proyectyo se debe ejecutar en la carpeta src:
+Compilar el proyecto se debe ejecutar en la carpeta src:
 
 javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java") (comando probado solo en Ubuntu)
 
