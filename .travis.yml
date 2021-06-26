@@ -2,6 +2,9 @@ language: java
 jdk: openjdk8
 matrix:
   - JOB="./gradlew build"
-  - KOB= "ls"
+  - KOB= "javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java")"
+  - MOB= "java -cp .:../lib/AbsoluteLayout.jar  Vista.VistaPrincipal"
 script: "$JOB"
 script: "KOB"
+script: "MOB"
+
