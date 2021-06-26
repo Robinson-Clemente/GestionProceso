@@ -136,16 +136,17 @@ public class TablaResultado {
                             y++;
                             }
 
-                        // Si no consigue llegadas y el proceso de element ==0 entonces Buscamos el mas rapido
+                        // Si no consigue llegadas y el proceso de element == 0 entonces buscamos el mas rapido
                         if (estado == false & element.getProceso() == 0) {
-
+                            
                             element = getElMasRapido(cola);
 
-                        } // SINO BUSCAMOS EL MAS RAPIDO Y SI NO SE CONSIGUE QUE CONTINUE CON EL PROCESO
+                        } // sino buscamos el mas rapido y si no se obtiene, entonces se continua con el proceso
+                          
 
-                                    } else {
-                               element = getElMasRapido(cola);
-                            }
+                    } else{
+                            element = getElMasRapido(cola);
+                          }
 
                         }
                        cola = deleteZeros(cola);

@@ -46,15 +46,6 @@ public class ControlProceso {
         }catch(FileNotFoundException e){}
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+       
     
 }
