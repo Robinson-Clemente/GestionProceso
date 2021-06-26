@@ -1,8 +1,8 @@
 
 package Vista;
 
-//import Controlador.ControlProceso;
-//import Modelo.Proceso;
+import Controlador.ControlProceso;
+import Modelo.Proceso;
 import Modelo.TablaProceso;
 import Modelo.TablaResultado;
 import java.io.FileNotFoundException;
