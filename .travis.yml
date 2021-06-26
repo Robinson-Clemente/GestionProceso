@@ -4,3 +4,6 @@ matrix:
   - JOB="./gradlew build"
 
 script: "$JOB"
+scritp:"cd src"
+script: "javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java")"
+script: "java -cp .:../lib/AbsoluteLayout.jar  Vista.VistaPrincipal"
