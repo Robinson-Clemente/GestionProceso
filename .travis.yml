@@ -3,6 +3,4 @@ jdk: openjdk8
 matrix:
   - JOB="./gradlew build"
 script: "$JOB"
-script: "cd src"
-script: "javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java")"
-script: "java -cp .:../lib/AbsoluteLayout.jar  Vista.VistaPrincipal"
+
