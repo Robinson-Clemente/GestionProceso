@@ -1,3 +1,5 @@
+[![Build Status](https://www.travis-ci.com/Robinson-Clemente/GestionProceso.svg?branch=master)](https://www.travis-ci.com/Robinson-Clemente/GestionProceso)
+
 
 <h2>GestionProceso</h2>
 
