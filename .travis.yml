@@ -2,5 +2,6 @@ language: java
 jdk: openjdk8
 matrix:
   - JOB="./gradlew build"
+  - KOB= "ls"
 script: "$JOB"
-
+script: "KOB"
