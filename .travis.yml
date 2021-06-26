@@ -1,6 +1,5 @@
 language: java
 jdk: openjdk8
-sudo: false
 script:
  - cd src
  - javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java")
