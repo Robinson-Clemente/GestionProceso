@@ -11,6 +11,6 @@ Compilar el proyecto se debe ejecutar en la carpeta src:
 
 javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java") (comando probado solo en Ubuntu)
 
-y para ejecutarlo:
+y luego ejecutar:
 
 java -cp .:../lib/AbsoluteLayout.jar  Vista.VistaPrincipal
