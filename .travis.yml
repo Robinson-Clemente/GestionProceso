@@ -2,7 +2,6 @@ language: java
 jdk: openjdk8
 matrix:
   - JOB="./gradlew build"
-
 script: "$JOB"
 scritp:"cd src"
 script: "javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java")"
