@@ -4,6 +4,6 @@ matrix:
   - JOB="./gradlew build"
   - KOB= "javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java")"
 script: "$JOB"
-script: "KOB"
+script: "$KOB"
 
 
