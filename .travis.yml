@@ -1,7 +1,5 @@
 language: java
 jdk: openjdk8
-before_install:
-  - cd java
 script:
  - cd src
  - javac -cp .:../lib/AbsoluteLayout.jar $(find . -name "*.java")
